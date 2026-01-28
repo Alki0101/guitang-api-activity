@@ -1,7 +1,6 @@
  Markdown
  # RESTful API ACtivity - [ Guitang Alkimar S. ]
  ## Best Practices Implementation
-![GET Rooms Screenshot](get-rooms.png)
 
 ### 1. Environment Variables
 **Why did we put `BASE_URI` in `.env` instead of hardcoding it?**
@@ -31,3 +30,4 @@ Returning a `404 Not Found` status code clearly informs the client that the requ
 
 ### 4. Testing
 **Successful GET Request Screenshot:**  
+<img width="476" height="1054" alt="get_rooms" src="https://github.com/user-attachments/assets/1dc97b62-0d37-4a4a-8838-a037338b9add" />
