@@ -1,6 +1,7 @@
  Markdown
  # RESTful API ACtivity - [ Guitang Alkimar S. ]
  ## Best Practices Implementation
+![GET Rooms Screenshot](get-rooms.png)
 
 ### 1. Environment Variables
 **Why did we put `BASE_URI` in `.env` instead of hardcoding it?**
