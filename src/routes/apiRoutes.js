@@ -1,102 +1,102 @@
 const express = require('express');
 const router = express.Router();
-const data = require('../models/roomModel');
+const data = require('../models/transactionModel');
 const { stat } = require('node:fs');
 
-// Get all rooms
-router.get('/rooms', (req, res) => { 
-    const { type, price, isBooked, features} = req.query;
+// Get all transactions
+router.get('/transactions', (req, res) => { 
+    const { type, amount, date, description } = req.query;
 
 
-let filteredRooms = data
+let filteredTransaction = data
     .filter(
-        (room) =>
-        !type || room.type.toLowerCase() === type.toLowerCase(),
+        (transaction) =>
+        !type || transaction.type.toLowerCase() === type.toLowerCase(),
     )
     
     .filter(
-        (room) =>
-        !price || room.price === parseInt(price),
+        (transaction) =>
+        !amount || transaction.amount <= parseFloat(amount),
     )
     .filter(
-        (room) =>
-        isBooked !== undefined && isBooked !== null ? room.isBooked === (isBooked === 'true') : true,
+        (transaction) =>
+        !date || transaction.date === date,
     )
     .filter(
-        (room) =>
-        !features || features.split(',').every(feature => room.features.includes(feature)),
+        (transaction) =>
+        !description || transaction.description.toLowerCase().includes(description.toLowerCase()),
     );
-return filteredRooms.lenght === 0
-    ? req.status(404).json({
+return filteredTransaction.length === 0
+    ? res.status(404).json({
         status: 404, 
-        message: 'No rooms found matching the criteria'
+        message: 'No transactions found matching the criteria'
     }) 
     : res.status(200).json({ 
         status: 200,
-        message: 'Rooms retrieved successfully', 
-        data: filteredRooms
+        message: 'Transactions retrieved successfully', 
+        data: filteredTransaction
     })
 });
 
 
-// POST a new room
-router.post('/rooms', (req, res) => {
-    const {type, price, isBooked, features } = req.body || {};
+// POST a new transaction
+router.post('/transactions', (req, res) => {
+    const {type, amount, date, description } = req.body || {};
 
-    if (!type || !price || isBooked || !features ) {
-        return reststatus(400).json({
+    if (!type || !amount || !date || !description ) {
+        return res.status(400).json({
             status: 400,
             message:
-            'Type, price, isBooked, and features are required to create a room',
+            'Type, amount, date, and description are required to create a transaction',
         });
 }
 
-const newRoom = {id: data.length + 1, type, price, isBooked, features};
-data.push(newRoom);
+const newTransaction = {id: data.length + 1, type, amount, date, description};
+data.push(newTransaction);
 res.status(201).json({
     status: 201,
-    message: 'Room created successfully',
-    data: newRoom,  
+    message: 'Transaction created successfully',
+    data: newTransaction,  
 });
 });
 
-// PUT and Update room
+// PUT and Update transaction
 
-router.put('/rooms/:id', (req, res) => {
+router.put('/transactions/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const index = data.findIndex((d) => d.id === id);
     if (index === -1) {
         return res.status(404).json({
             status: 404,
-            message: `Room with id ${id} not found.`,
+            message: `Transaction with id ${id} not found.`,
         });
     }
 
     data [index] = { id, ...req.body };
     res.status(200).json({
         status: 200,
-        message: 'Room Updated Successfully',
+        message: 'Transaction Updated Successfully',
         data: data[index],
     });
 });
 
-// DELETE a room 
+// DELETE a transaction 
 
-router.delete('/rooms/:id', (req, res) => {
+router.delete('/transactions/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const index = data.findIndex((d) => d.id === id);
 
     if (index === -1) {
         return res.status(404).json({
             status: 404,
-            message: `Room with id ${id} not found.`,
+            message: `Transaction with id ${id} not found.`,
         });
     }
 
     data.splice(index, 1);
     res.status(203).json({
         status: 203,
-        message: 'Room Deleted Successfully',
+        message: 'Transaction Deleted Successfully',
     });
 });
 
