@@ -30,3 +30,4 @@ Returning a `404 Not Found` status code clearly informs the client that the requ
 
 ### 4. Testing
 **Successful GET Request Screenshot:**  
+<img width="476" height="1054" alt="get_rooms" src="https://github.com/user-attachments/assets/1dc97b62-0d37-4a4a-8838-a037338b9add" />
