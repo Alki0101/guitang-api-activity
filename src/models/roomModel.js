@@ -1,33 +1,32 @@
-const rooms = [
+const transactions = [
     {
-        id: 101,
-        type: 'Single',
-        Price: 100,
-        isBooked: false,
-        features: ['WiFi', 'TV'],
+        id: 1,
+        description: 'Starbucks Coffe',
+        amount: 5.5,
+        type: 'expense',
+        date: '2023-10-01,
     },
     {
-        id: 102,
-        type: 'Double',
-        Price: 150,
-        isBooked: true,
-        features: ['WiFi', 'TV', 'Mini Bar'],
-
+        id: 2,
+        description: 'Freelance Client Payment',
+        amount: 500.0,
+        type: 'income',
+        date: '2023-10-02,
     },
     {
-        id: 201,
-        type: 'Suite',
-        Price: 300,
-        isBooked: false,
-        features: ['WiFi', 'TV','Mini Bar', 'Jacuzzi'],
+        id: 3,
+        description: 'Grocery Store',
+        amount: 120.0,
+        type: 'expense',
+        date: '2023-10-05,
     },
     {
-        id: 202,
-        type: 'Single',
-        Price: 100,
-        isBooked: false,
-        features: ['WiFi'],
+        id: 4,
+        description: 'Monthly Rent',
+        amount: 1200.0,
+        type: 'expense',
+        date: '2023-10-01,
     }
 ];
 
-module.exports = rooms;
+module.exports = transactions;
