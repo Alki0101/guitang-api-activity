@@ -1,5 +1,5 @@
  Markdown
- # RESTful API ACtivity - [ Guitang Alkimar S. ]
+ # RESTful API ACtivity -  Guitang Alkimar S. 
  ## Best Practices Implementation
 
 ### 1. Environment Variables
