@@ -30,5 +30,12 @@ Returning a `404 Not Found` status code clearly informs the client that the requ
 
 ### 4. Testing
 **Successful GET Request Screenshot:**  
+
+Activity #01
 <img width="634" height="750" alt="transactions" src="https://github.com/user-attachments/assets/7c487ea9-9911-40fa-8893-acf3abc1ed70" />
+
+Activity #02
+<img width="1255" height="1061" alt="api" src="https://github.com/user-attachments/assets/f33a90d5-214c-49b7-81cd-5d3ff14b87ef" />
+
+
 
