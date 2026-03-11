@@ -15,7 +15,10 @@ const BASE_URI = process.env.BASE_URI || '/api/v1';
 
 // Routes
 const apiRoutes = require('./src/routes/apiRoutes');
+const authRoutes = require('./src/routes/authRoutes');
+
 app.use(BASE_URI, apiRoutes);
+app.use(`${BASE_URI}/auth`, authRoutes);
 
 // Server
 app.listen(PORT, () => {

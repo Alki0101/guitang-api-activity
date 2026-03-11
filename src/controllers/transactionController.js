@@ -1,21 +1,17 @@
-const transaction = require('../models/transactionModel');
+const Transaction = require('../models/transactionModel');
 const User = require('../models/userModel');
 
 //1. Get all transactions
-const getAllTransactions = async (req, res) => {
+const getTransactions = async (req, res) => {
     try {
-        const transactions = await transaction.find();
+        const transactions = await Transaction.find();
         res.status(200).json(transactions);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }   
 };
 
-
 //2. Create a new transaction
-
-const Transaction = require('../models/transactionModel');
-
 const createTransaction = async (req, res) => {
   try {
     const transaction = new Transaction(req.body);
@@ -29,7 +25,7 @@ const createTransaction = async (req, res) => {
 //3. GET ONE: Get a single transaction by ID
 const getTransactionById = async (req, res) => {
     try {
-        const transId = await transaction.findById(req.params.id);
+        const transId = await Transaction.findById(req.params.id);
         if (!transId) {
             return res.status(404).json({ message: 'Transaction not found' });
         }
@@ -42,7 +38,7 @@ const getTransactionById = async (req, res) => {
 //4.UPDATE: Change a price or name 
 const updateTransaction = async (req, res) => {
     try {
-        const updatedTransaction = await transaction.findByIdAndUpdate(req.params.id, req.body, {
+        const updatedTransaction = await Transaction.findByIdAndUpdate(req.params.id, req.body, {
              new: true 
             });
             if (!updatedTransaction) {
@@ -58,7 +54,7 @@ const updateTransaction = async (req, res) => {
 //5.DELETE: Remove a transaction by ID
 const deleteTransaction = async (req, res) => {
     try {     
-        const deletedTransaction = await transaction.findByIdAndDelete(req.params.id);
+        const deletedTransaction = await Transaction.findByIdAndDelete(req.params.id);
         if (!deletedTransaction) {
             return res.status(404).json({ message: 'Transaction not found' });
         }
@@ -85,7 +81,7 @@ const createUser = async (req, res) => {
 
 
 module.exports = {
-    getAllTransactions,
+    getTransactions,
     createTransaction,  
     getTransactionById,
     updateTransaction,
