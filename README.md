@@ -31,31 +31,31 @@ Returning a `404 Not Found` status code clearly informs the client that the requ
 ### 4. Testing
 **Successful GET Request Screenshot:**  
 
-Activity #01
+### Activity #01
 
 <img width="634" height="750" alt="transactions" src="https://github.com/user-attachments/assets/7c487ea9-9911-40fa-8893-acf3abc1ed70" />
 
-Activity #02
+### Activity #02
 <img width="1255" height="1061" alt="api" src="https://github.com/user-attachments/assets/f33a90d5-214c-49b7-81cd-5d3ff14b87ef" />
 
-Activity #04
+### Activity #04
 
-1. Authentication vs Authorization:
-o What is the difference between Authentication and Authorization in our code?
+### 1. Authentication vs Authorization:
+**o What is the difference between Authentication and Authorization in our code?
 
-Authentication is the process of checking if the user is really who they say they are weather what thier roles logging in using thier email and password.
+# - Authentication is the process of checking if the user is really who they say they are weather what thier roles logging in using thier email and password.
 
-Authorization happens after when authentication works and decides if that user is authorized and allowed to do in the system.
+# - Authorization happens after when authentication works and decides if that user is authorized and allowed to do in the system.
 
-2. Security (bcrypt):
-o Why did we use bcryptjs instead of saving passwords as plain text in MongoDB?
+### 2. Security (bcrypt):
+**o Why did we use bcryptjs instead of saving passwords as plain text in MongoDB?
 
-We used bcryptjs because saving plain text passwords in MongoDB is unsafe. If the database gets hacked, attackers would see the raw passwords easy for them to exploit . Hashing with bcrypt makes the passwords unreadable and adds extra protection by using salt, so even similar passwords don’t look the same in the database they became long or encrypted.
+# - We used bcryptjs because saving plain text passwords in MongoDB is unsafe. If the database gets hacked, attackers would see the raw passwords easy for them to exploit . Hashing with bcrypt makes the passwords unreadable and adds extra protection by using salt, so even similar passwords don’t look the same in the database they became long or encrypted.
 
-3. JWT Structure:
-o What does the protect middleware do when it receives a JWT from the client?
+### 3. JWT Structure:
+**o What does the protect middleware do when it receives a JWT from the client?
 
-When the protect middleware receives a JWT from the client, it verifies if the token is valid. If valid, it decodes the token to get the user’s ID and attaches that user info to the request object. This ensures only authenticated users can access protected routes.
+# - When the protect middleware receives a JWT from the client, it verifies if the token is valid. If valid, it decodes the token to get the user’s ID and attaches that user info to the request object. This ensures only authenticated users can access protected routes.
 
 <img width="1919" height="1008" alt="Screenshot 2026-03-11 122652" src="https://github.com/user-attachments/assets/0dcd89de-910a-4cea-8832-a9d98feaec01" />
 
