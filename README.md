@@ -1,4 +1,4 @@
- Markdown
+Markdown
  # RESTful API ACtivity -  Guitang Alkimar S. 
  ## Best Practices Implementation
 
@@ -60,6 +60,36 @@ What does the protect middleware do when it receives a JWT from the client?
 <img width="1919" height="1008" alt="Screenshot 2026-03-11 122652" src="https://github.com/user-attachments/assets/0dcd89de-910a-4cea-8832-a9d98feaec01" />
 
 <img width="1520" height="1075" alt="Screenshot 2026-03-11 122731" src="https://github.com/user-attachments/assets/1a94f2a2-8d62-4522-828f-b9a905fee812" />
+
+
+### Activity #05
+
+## Unit Test Specification
+
+| Test ID | Module                | Function           | Scenario Description                        | Expected Output / Status                | Status |
+|---------|----------------------|--------------------|---------------------------------------------|-----------------------------------------|--------|
+| UT-001  | TransactionController | getTransactions    | Fetch all transactions successfully         | HTTP 200, Array of Transaction Objects  | Pass   |
+| UT-002  | TransactionController | getTransactions    | Database throws a connection error          | HTTP 500, { message: ... } JSON         | Pass   |
+| UT-003  | TransactionController | createTransaction  | Create a new transaction                    | HTTP 201, Transaction Object            | Pass   |
+| UT-004  | AuthMiddleware        | protect            | Request missing Authorization header         | HTTP 401, { message: ... } JSON         | Pass   |
+| UT-005  | AuthMiddleware        | protect            | Valid Bearer token provided                 | next() function is called               | Pass   |
+
+### Essay Questions
+
+1. **Mocking:**
+   - **Explain in your own words why we mocked Dish.find and jwt.verify. What specific problem does mocking solve in Unit Testing?**
+   - **Answer:**
+     Mocking allows us to replace real functions  with fake versions that return controlled results. This isolates the code we want to test from external dependencies like the database or authentication system. By mocking, we ensure our unit tests only test the logic of our code, not the behavior or availability of outside systems. This makes tests more reliable, faster, and easier to write.
+
+2. **Code Coverage:**
+   - **Look at your Jest Coverage report. Explain what % Branch coverage means. If your Branch coverage is at 50%, what does that tell you about your tests? (Hint: Think about if/else statements).**
+   - **Answer:**
+     my your branch coverage is 50%, it means only half of the possible decision paths  have been tested. To improve this
+
+3. **Testing Middleware:**
+   - **In our authMiddleware.test.js, why did we use jest.fn() for the next variable, and why did we assert expect(next).not.toHaveBeenCalled() in the failure scenario?**
+   - **Answer:**
+     We use jest.fn() to create a mock function for next so we can track if it was called. In the failure scenario, we assert expect(next).not.toHaveBeenCalled() to make sure the middleware correctly blocks unauthorized requests and does not proceed to the next middleware or route handler. This verifies that our authentication logic is working as intended.
 
 
 
